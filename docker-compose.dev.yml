@@ -10,7 +10,7 @@ services:
       - ./app/src:/app/src
       - ./app/.svelte-kit/:/app/.svelte-kit
     ports:
-      - 3001:3001
+      - 3000:3000
 
   pb:
     container_name: selfcheck-pb
@@ -21,4 +21,4 @@ services:
       - ./pb/pb_data:/pb/pb_data
       - ./pb/pb_migrations:/pb/pb_migrations
     ports:
-      - 8081:8081
+      - 8080:8080
