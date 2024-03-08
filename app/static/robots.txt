@@ -1,0 +1,15 @@
+User-agent: *
+
+Disallow: /auth
+Disallow: /change
+Disallow: /chats
+Disallow: /create
+Disallow: /discussions
+Disallow: /results
+Disallow: /login
+Disallow: /polls
+Disallow: /reset
+Disallow: /signup
+Disallow: /users
+Allow: /polls/
+Allow: /discussions/
