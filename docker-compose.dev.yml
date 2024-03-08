@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    container_name: outoftale-app
+    container_name: selfcheck-app
     working_dir: /app
     build:
       context: ./app
@@ -10,10 +10,10 @@ services:
       - ./app/src:/app/src
       - ./app/.svelte-kit/:/app/.svelte-kit
     ports:
-      - 3000:3000
+      - 3001:3001
 
   pb:
-    container_name: outoftale-pb
+    container_name: selfcheck-pb
     working_dir: /pb
     build:
       context: ./pb
@@ -21,4 +21,4 @@ services:
       - ./pb/pb_data:/pb/pb_data
       - ./pb/pb_migrations:/pb/pb_migrations
     ports:
-      - 8080:8080
+      - 8081:8081

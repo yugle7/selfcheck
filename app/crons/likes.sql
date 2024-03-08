@@ -11,7 +11,7 @@ FROM (
     SELECT
       poll_id AS id,
       react as r
-    FROM votes
+    FROM poll_reacts
   )
   GROUP BY id, r
 )
