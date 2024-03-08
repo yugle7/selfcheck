@@ -5,7 +5,7 @@
 	import Text from '$lib/text/Text.svelte';
 
 	export let result;
-	const { id, title, categories, text, created } = result;
+	const { id, title, categories, text, updated } = result;
 </script>
 
 <div class="col content-900 padding-20 gap-10">
@@ -15,7 +15,7 @@
 			<span class="subtitle">{categories.map((c) => poll_category[c]).join(', ')}</span>
 		</a>
 		<span class="top-right">
-			<Date time={created} />
+			<Date time={updated} />
 		</span>
 	</div>
 	<Text {text} />

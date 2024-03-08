@@ -10,7 +10,6 @@
 	export let profile;
 
 	let { react, id } = poll;
-	console.log(poll);
 </script>
 
 {#if profile}

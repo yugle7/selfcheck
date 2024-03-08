@@ -1,6 +1,5 @@
 <script>
 	import { normText } from '$lib/edit/data';
-
 	import ToResult from './ToResult.svelte';
 
 	export let results;

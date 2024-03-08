@@ -1,49 +1,17 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((db) => {
   const collection = new Collection({
-    "id": "5lz59gu5vyp0x3x",
-    "created": "2024-03-08 07:48:10.897Z",
-    "updated": "2024-03-08 07:48:10.897Z",
-    "name": "user_results",
+    "id": "0eo1vo8rktqekcz",
+    "created": "2024-03-08 15:10:18.010Z",
+    "updated": "2024-03-08 15:10:18.010Z",
+    "name": "poll_answers",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "tddlclzk",
-        "name": "poll_id",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "27rpm5hb2squrua",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": []
-        }
-      },
-      {
-        "system": false,
-        "id": "5moyjy88",
-        "name": "result_id",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "lyfhfpwoteyvl0q",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "4nilacis",
-        "name": "weight",
+        "id": "ovs0fpdu",
+        "name": "index",
         "type": "number",
         "required": false,
         "presentable": false,
@@ -56,7 +24,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "lknf0x0i",
+        "id": "mgxqlffp",
         "name": "text",
         "type": "text",
         "required": false,
@@ -70,24 +38,28 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "pr31rozw",
-        "name": "deleted",
-        "type": "bool",
+        "id": "avdiylc9",
+        "name": "weight",
+        "type": "number",
         "required": false,
         "presentable": false,
         "unique": false,
-        "options": {}
+        "options": {
+          "min": null,
+          "max": null,
+          "noDecimal": false
+        }
       },
       {
         "system": false,
-        "id": "r4wvjsxm",
-        "name": "profile_id",
+        "id": "io9tnohy",
+        "name": "question_id",
         "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "collectionId": "_pb_users_auth_",
+          "collectionId": "h40ux5b9wuq9vi9",
           "cascadeDelete": false,
           "minSelect": null,
           "maxSelect": 1,
@@ -96,16 +68,18 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "zr2sqvit",
-        "name": "user_id",
-        "type": "text",
+        "id": "o1vibygr",
+        "name": "poll_id",
+        "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "min": null,
-          "max": 30,
-          "pattern": ""
+          "collectionId": "27rpm5hb2squrua",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
         }
       }
     ],
@@ -121,7 +95,7 @@ migrate((db) => {
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("5lz59gu5vyp0x3x");
+  const collection = dao.findCollectionByNameOrId("0eo1vo8rktqekcz");
 
   return dao.deleteCollection(collection);
 })

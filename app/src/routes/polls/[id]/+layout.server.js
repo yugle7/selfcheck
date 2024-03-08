@@ -29,17 +29,17 @@ async function loadPoll(pb, profile, id) {
 async function loadQuestions(pb, id) {
     const data = {};
 
-    const questions = await pb.collection('questions').getFullList({ filter: `poll_id="${id}"`, sort: 'index' });
+    const questions = await pb.collection('poll_questions').getFullList({ filter: `poll_id="${id}"`, sort: 'index' });
     questions.forEach(({ id }) => data[id] = []);
 
-    const answers = await pb.collection('answers').getFullList({ filter: `poll_id="${id}"`, sort: 'index' });
+    const answers = await pb.collection('poll_answers').getFullList({ filter: `poll_id="${id}"`, sort: 'index' });
     answers.forEach(({ id, question_id, text, weight }) => data[question_id].push({ id, text, weight }));
 
     return questions.map(({ id, text, note, type }) => ({ id, text, note, type, answers: data[id] }));
 }
 
 async function loadResults(pb, id) {
-    const results = await pb.collection('results').getFullList({ filter: `poll_id="${id}"`, sort: 'index' });
+    const results = await pb.collection('poll_results').getFullList({ filter: `poll_id="${id}"`, sort: 'index' });
     return results.map(({ id, text, weight }) => ({ id, text, weight }));
 }
 

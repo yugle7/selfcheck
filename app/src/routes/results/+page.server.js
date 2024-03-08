@@ -1,20 +1,17 @@
 import { redirect } from '@sveltejs/kit';
 
-async function loadResults(pb, profile) {
-    const res = await pb.collection('user_results').getFullList({
-        filter: `profile_id="${profile.id}"`,
+async function loadResults(pb, profile_id) {
+    const res = await pb.collection('results').getFullList({
+        filter: `profile_id="${profile_id}"`,
         expand: 'poll_id',
-        sort: '-created'
+        sort: '-updated'
     });
 
-    const results = {};
-    res.forEach(r => {
-        const { id, text, poll_id, expand, created } = r;
+    return res.map(result => {
+        const { id, text, expand, updated } = result;
         const { title, about, status, categories } = expand.poll_id;
-
-        if (!results[poll_id]) results[poll_id] = { id, text, created, title, about, status, categories };
+        return { id, text, updated, title, about, status, categories };
     });
-    return Object.values(results);
 }
 
 export async function load({ locals }) {
@@ -23,8 +20,5 @@ export async function load({ locals }) {
 
     if (!profile) throw redirect(303, '/login');
 
-    return {
-        results: loadResults(pb, profile),
-        profile
-    };
+    return { profile, results: loadResults(pb, profile.id) };
 }

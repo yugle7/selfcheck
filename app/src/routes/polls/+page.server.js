@@ -46,7 +46,7 @@ export async function load({ locals, url }) {
 
     if (profile) {
         const status = url.searchParams.get('status');
-        if (status != null && profile.role >= 2) params.status = parseInt(status);
+        if (status != null && profile.role >= 2) params.status = +status;
     }
     return {
         polls: loadPolls(pb, profile, params),

@@ -1,16 +1,16 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((db) => {
   const collection = new Collection({
-    "id": "ei9pgxln6nx97is",
-    "created": "2024-03-08 07:48:10.897Z",
-    "updated": "2024-03-08 07:48:10.897Z",
-    "name": "poll_reacts",
+    "id": "h2l5x29q56u7u5p",
+    "created": "2024-03-08 15:10:18.010Z",
+    "updated": "2024-03-08 15:10:18.010Z",
+    "name": "friends",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "svi0funa",
+        "id": "7sbzkaec",
         "name": "profile_id",
         "type": "relation",
         "required": false,
@@ -26,32 +26,18 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "0esml5ia",
-        "name": "poll_id",
+        "id": "6govfx99",
+        "name": "user_id",
         "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "collectionId": "27rpm5hb2squrua",
+          "collectionId": "_pb_users_auth_",
           "cascadeDelete": false,
           "minSelect": null,
           "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "woxs09np",
-        "name": "react",
-        "type": "number",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": null,
-          "noDecimal": false
+          "displayFields": []
         }
       }
     ],
@@ -67,7 +53,7 @@ migrate((db) => {
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("ei9pgxln6nx97is");
+  const collection = dao.findCollectionByNameOrId("h2l5x29q56u7u5p");
 
   return dao.deleteCollection(collection);
 })

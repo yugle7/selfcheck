@@ -2,9 +2,9 @@
 migrate((db) => {
   const collection = new Collection({
     "id": "h40ux5b9wuq9vi9",
-    "created": "2024-03-08 07:48:10.896Z",
-    "updated": "2024-03-08 07:48:10.896Z",
-    "name": "questions",
+    "created": "2024-03-08 15:10:18.010Z",
+    "updated": "2024-03-08 15:10:18.010Z",
+    "name": "poll_questions",
     "type": "base",
     "system": false,
     "schema": [

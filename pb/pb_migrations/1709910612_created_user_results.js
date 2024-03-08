@@ -1,16 +1,16 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((db) => {
   const collection = new Collection({
-    "id": "qy3yyqmeqtif7em",
-    "created": "2024-03-08 07:48:10.897Z",
-    "updated": "2024-03-08 07:48:10.897Z",
-    "name": "user_answers",
+    "id": "5lz59gu5vyp0x3x",
+    "created": "2024-03-08 15:10:18.012Z",
+    "updated": "2024-03-08 15:10:18.012Z",
+    "name": "user_results",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "5vsxlduu",
+        "id": "tddlclzk",
         "name": "poll_id",
         "type": "relation",
         "required": true,
@@ -26,46 +26,14 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "jztms1ur",
-        "name": "answer_id",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "0eo1vo8rktqekcz",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "hqlyrmb0",
-        "name": "question_id",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "h40ux5b9wuq9vi9",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "bp7nud5a",
+        "id": "5moyjy88",
         "name": "result_id",
         "type": "relation",
-        "required": true,
+        "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "collectionId": "5lz59gu5vyp0x3x",
+          "collectionId": "lyfhfpwoteyvl0q",
           "cascadeDelete": false,
           "minSelect": null,
           "maxSelect": 1,
@@ -74,7 +42,21 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "wb1dbqta",
+        "id": "4nilacis",
+        "name": "weight",
+        "type": "number",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "noDecimal": false
+        }
+      },
+      {
+        "system": false,
+        "id": "lknf0x0i",
         "name": "text",
         "type": "text",
         "required": false,
@@ -83,6 +65,46 @@ migrate((db) => {
         "options": {
           "min": null,
           "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "pr31rozw",
+        "name": "deleted",
+        "type": "bool",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {}
+      },
+      {
+        "system": false,
+        "id": "r4wvjsxm",
+        "name": "profile_id",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "_pb_users_auth_",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "zr2sqvit",
+        "name": "user_id",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": 30,
           "pattern": ""
         }
       }
@@ -99,7 +121,7 @@ migrate((db) => {
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("qy3yyqmeqtif7em");
+  const collection = dao.findCollectionByNameOrId("5lz59gu5vyp0x3x");
 
   return dao.deleteCollection(collection);
 })

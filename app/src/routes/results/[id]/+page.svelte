@@ -13,7 +13,6 @@
 
 	export let data;
 	const { result } = data;
-	const { title } = result;
 
 	$: profile = data.profile;
 
@@ -22,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<title>Результат – {title}</title>
+	<title>Результат – {result.title}</title>
 </svelte:head>
 
 {#if $screen}

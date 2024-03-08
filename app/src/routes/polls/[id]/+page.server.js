@@ -115,9 +115,9 @@ const editAnswer = async (pb, answer, index, question_id, poll_id) => {
 
     if (id.length < 15) {
         console.log({ ...answer, question_id, poll_id });
-        await pb.collection('answers').create({ ...answer, question_id, poll_id });
+        await pb.collection('poll_answers').create({ ...answer, question_id, poll_id });
     } else {
-        await pb.collection('answers').update(id, answer);
+        await pb.collection('poll_answers').update(id, answer);
     }
 };
 
@@ -129,10 +129,10 @@ const editQuestion = async (pb, question, index, poll_id) => {
     question.index = index;
 
     if (id.length < 15) {
-        const res = await pb.collection('questions').create({ ...question, poll_id });
+        const res = await pb.collection('poll_questions').create({ ...question, poll_id });
         id = res.id;
     } else {
-        await pb.collection('questions').update(id, question);
+        await pb.collection('poll_questions').update(id, question);
     }
     await Promise.all(answers.map((a, i) => editAnswer(pb, a, i, id, poll_id)));
 };
@@ -144,9 +144,9 @@ const editResult = async (pb, result, index, poll_id) => {
     result.index = index;
 
     if (id.length < 15) {
-        await pb.collection('results').create({ ...result, poll_id });
+        await pb.collection('poll_results').create({ ...result, poll_id });
     } else {
-        await pb.collection('results').update(id, result);
+        await pb.collection('poll_results').update(id, result);
     }
 };
 
@@ -188,6 +188,7 @@ export const actions = {
         const result = JSON.parse(data.get('result'));
         result.poll_id = id;
         if (profile) result.profile_id = profile.id;
+
         const res = await pb.collection('user_results').create(result);
 
         const answers = JSON.parse(data.getAll('answers'));
@@ -200,6 +201,23 @@ export const actions = {
                 })
             )
         );
+        if (profile) {
+            const id = addId(profile.id, res.poll_id);
+            const result = { result_id: res.id, text: res.text };
+
+            try {
+                await pb.collection('results').create({
+                    id,
+                    profile_id: profile.id,
+                    result_id: res.id,
+                    poll_id: res.poll_id,
+                    ...result
+                });
+            } catch (err) {
+                console.log(err.message);
+                await pb.collection('results').update(id, result);
+            }
+        }
     },
     status: async ({ request, params, locals }) => {
         const pb = locals.pb;

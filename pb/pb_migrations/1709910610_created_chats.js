@@ -2,8 +2,8 @@
 migrate((db) => {
   const collection = new Collection({
     "id": "bqquvc01wg176wu",
-    "created": "2024-03-08 07:48:10.896Z",
-    "updated": "2024-03-08 07:48:10.896Z",
+    "created": "2024-03-08 15:10:18.009Z",
+    "updated": "2024-03-08 15:10:18.009Z",
     "name": "chats",
     "type": "base",
     "system": false,

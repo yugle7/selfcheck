@@ -1,1484 +1,5 @@
 [
     {
-        "id": "o3t8y8r5ea8osdu",
-        "name": "which",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "fo7fiw5p",
-                "name": "name",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
-        "options": {}
-    },
-    {
-        "id": "9znp6b0e2nq8to8",
-        "name": "who",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "sovhrtel",
-                "name": "name",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
-        "options": {}
-    },
-    {
-        "id": "h2l5x29q56u7u5p",
-        "name": "friends",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "7sbzkaec",
-                "name": "profile_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": []
-                }
-            },
-            {
-                "system": false,
-                "id": "6govfx99",
-                "name": "user_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": []
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "cd762m3lmdhskpd",
-        "name": "username",
-        "type": "view",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "c81hor2e",
-                "name": "which",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 1
-                }
-            },
-            {
-                "system": false,
-                "id": "76kf3kvy",
-                "name": "who",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 1
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": null,
-        "viewRule": null,
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
-        "options": {
-            "query": "SELECT who.id, which, who FROM (\n  SELECT '000000000000000' as id, name as which FROM which\n  ORDER BY RANDOM()\n  LIMIT 1) as which\nJOIN (\n  SELECT '000000000000000' as id, name as who FROM who\n  ORDER BY RANDOM()\n  LIMIT 1) as who\nON which.id = who.id"
-        }
-    },
-    {
-        "id": "eimqqof2zk3kntz",
-        "name": "discussions",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "w5nv6gbn",
-                "name": "title",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "wzozt2ys",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "ci069jmo",
-                "name": "author_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "eljdqzez",
-                "name": "author",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 2000000
-                }
-            },
-            {
-                "system": false,
-                "id": "lhvly3hw",
-                "name": "topic",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "fml0lflf",
-                "name": "1",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "jghos11v",
-                "name": "2",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "dnwvkrbl",
-                "name": "like",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "gunar1x7",
-                "name": "messages",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "vufxxy41",
-                "name": "changed",
-                "type": "date",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": "",
-                    "max": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "27rpm5hb2squrua",
-        "name": "polls",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "7zuzldby",
-                "name": "title",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "wcxarcuq",
-                "name": "about",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "eh6rbrc3",
-                "name": "author_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": []
-                }
-            },
-            {
-                "system": false,
-                "id": "3nvxqvtx",
-                "name": "author",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 256
-                }
-            },
-            {
-                "system": false,
-                "id": "qli7qudu",
-                "name": "categories",
-                "type": "json",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 256
-                }
-            },
-            {
-                "system": false,
-                "id": "phqewye9",
-                "name": "status",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "8funtfpv",
-                "name": "1",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "eefsdhcb",
-                "name": "2",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "vapsfbca",
-                "name": "like",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "gacmzwc9",
-                "name": "results",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "dklptrlv",
-                "name": "questions",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "zyzw8liw",
-                "name": "changed",
-                "type": "date",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": "",
-                    "max": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "9miysnhx1bzbgeh",
-        "name": "talks",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "jp4zwqzc",
-                "name": "profile_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "7ymme7kz",
-                "name": "chat_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "bqquvc01wg176wu",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "8onelvf1",
-                "name": "user_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "1fdwpcax",
-                "name": "message_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "mxqqxegd9y1p8ym",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "qu5tjbal",
-                "name": "read",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "trsy7gb8",
-                "name": "deleted",
-                "type": "bool",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {}
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "mxqqxegd9y1p8ym",
-        "name": "messages",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "q5pnfrcn",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "wilczvwk",
-                "name": "chat_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "bqquvc01wg176wu",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "u7k0tmvf",
-                "name": "reply",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 2000000
-                }
-            },
-            {
-                "system": false,
-                "id": "gdy3kdtn",
-                "name": "deleted",
-                "type": "bool",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {}
-            },
-            {
-                "system": false,
-                "id": "40vilqds",
-                "name": "author_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "k7dgxqau",
-                "name": "author",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 2000000
-                }
-            },
-            {
-                "system": false,
-                "id": "sykbjopq",
-                "name": "1",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "ghvwcymr",
-                "name": "2",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "uu9jrbij",
-                "name": "3",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "blg3whgc",
-                "name": "4",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "vlxbcous",
-                "name": "5",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "s0hbhn1h",
-                "name": "6",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "v4ijj65ff5xd7mj",
-        "name": "like",
-        "type": "view",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "f10wexpk",
-                "name": "p0",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 1
-                }
-            },
-            {
-                "system": false,
-                "id": "sh5oubig",
-                "name": "p1",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 1
-                }
-            },
-            {
-                "system": false,
-                "id": "b63gh8vb",
-                "name": "p2",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 1
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": null,
-        "viewRule": null,
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
-        "options": {
-            "query": "SELECT\n  id,\n  SUM((r = 0) * c) AS p0,\n  SUM((r = 1) * c) AS p1,\n  SUM((r = 2) * c) AS p2\nFROM (\n  SELECT\n    id, r,\n    COUNT(*) AS c\n  FROM (\n    SELECT\n      poll_id AS id,\n      react as r\n    FROM poll_reacts\n  )\n  GROUP BY id, r\n)\nGROUP BY id"
-        }
-    },
-    {
-        "id": "bqquvc01wg176wu",
-        "name": "chats",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "bhu3vkkw",
-                "name": "title",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "tlilips5",
-                "name": "sender_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "e6dp4iuq",
-                "name": "message_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "mxqqxegd9y1p8ym",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "7hhy16la",
-                "name": "message",
-                "type": "json",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "maxSize": 2000000
-                }
-            },
-            {
-                "system": false,
-                "id": "xreyimhc",
-                "name": "type",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "y49jlzxy",
-                "name": "sent",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "xzqqqn0m",
-                "name": "changed",
-                "type": "date",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": "",
-                    "max": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "0eo1vo8rktqekcz",
-        "name": "answers",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "ovs0fpdu",
-                "name": "index",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "mgxqlffp",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "avdiylc9",
-                "name": "weight",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "io9tnohy",
-                "name": "question_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "h40ux5b9wuq9vi9",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "o1vibygr",
-                "name": "poll_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "27rpm5hb2squrua",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "h40ux5b9wuq9vi9",
-        "name": "questions",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "77bc6nfi",
-                "name": "index",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "bdog1zoa",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "ddzx4edn",
-                "name": "note",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "tdpcyqig",
-                "name": "type",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "krmxzufs",
-                "name": "poll_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "27rpm5hb2squrua",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "lyfhfpwoteyvl0q",
-        "name": "results",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "hakl4fxs",
-                "name": "index",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "z5qb50l3",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "d8aid3ad",
-                "name": "weight",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "exkdf2ja",
-                "name": "poll_id",
-                "type": "relation",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "27rpm5hb2squrua",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": []
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "5lz59gu5vyp0x3x",
-        "name": "user_results",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "tddlclzk",
-                "name": "poll_id",
-                "type": "relation",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "27rpm5hb2squrua",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": []
-                }
-            },
-            {
-                "system": false,
-                "id": "5moyjy88",
-                "name": "result_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "lyfhfpwoteyvl0q",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "4nilacis",
-                "name": "weight",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "lknf0x0i",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "system": false,
-                "id": "pr31rozw",
-                "name": "deleted",
-                "type": "bool",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {}
-            },
-            {
-                "system": false,
-                "id": "r4wvjsxm",
-                "name": "profile_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "zr2sqvit",
-                "name": "user_id",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": 30,
-                    "pattern": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "qy3yyqmeqtif7em",
-        "name": "user_answers",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "5vsxlduu",
-                "name": "poll_id",
-                "type": "relation",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "27rpm5hb2squrua",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": []
-                }
-            },
-            {
-                "system": false,
-                "id": "jztms1ur",
-                "name": "answer_id",
-                "type": "relation",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "0eo1vo8rktqekcz",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "hqlyrmb0",
-                "name": "question_id",
-                "type": "relation",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "h40ux5b9wuq9vi9",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "bp7nud5a",
-                "name": "result_id",
-                "type": "relation",
-                "required": true,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "5lz59gu5vyp0x3x",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "wb1dbqta",
-                "name": "text",
-                "type": "text",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "h37jbgf4s238vnb",
-        "name": "reacts",
-        "type": "base",
-        "system": false,
-        "schema": [
-            {
-                "system": false,
-                "id": "47pjxsha",
-                "name": "talk_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "9miysnhx1bzbgeh",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "qyitjqyo",
-                "name": "profile_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "_pb_users_auth_",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "toyqrq4e",
-                "name": "message_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "mxqqxegd9y1p8ym",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            },
-            {
-                "system": false,
-                "id": "lkzqbl2u",
-                "name": "react",
-                "type": "number",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "noDecimal": false
-                }
-            },
-            {
-                "system": false,
-                "id": "qvmwf0ub",
-                "name": "chat_id",
-                "type": "relation",
-                "required": false,
-                "presentable": false,
-                "unique": false,
-                "options": {
-                    "collectionId": "bqquvc01wg176wu",
-                    "cascadeDelete": false,
-                    "minSelect": null,
-                    "maxSelect": 1,
-                    "displayFields": null
-                }
-            }
-        ],
-        "indexes": [],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
         "id": "_pb_users_auth_",
         "name": "users",
         "type": "auth",
@@ -1685,15 +206,29 @@
         }
     },
     {
-        "id": "ei9pgxln6nx97is",
-        "name": "poll_reacts",
+        "id": "bqquvc01wg176wu",
+        "name": "chats",
         "type": "base",
         "system": false,
         "schema": [
             {
                 "system": false,
-                "id": "svi0funa",
-                "name": "profile_id",
+                "id": "bhu3vkkw",
+                "name": "title",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "tlilips5",
+                "name": "sender_id",
                 "type": "relation",
                 "required": false,
                 "presentable": false,
@@ -1703,19 +238,19 @@
                     "cascadeDelete": false,
                     "minSelect": null,
                     "maxSelect": 1,
-                    "displayFields": []
+                    "displayFields": null
                 }
             },
             {
                 "system": false,
-                "id": "0esml5ia",
-                "name": "poll_id",
+                "id": "e6dp4iuq",
+                "name": "message_id",
                 "type": "relation",
                 "required": false,
                 "presentable": false,
                 "unique": false,
                 "options": {
-                    "collectionId": "27rpm5hb2squrua",
+                    "collectionId": "mxqqxegd9y1p8ym",
                     "cascadeDelete": false,
                     "minSelect": null,
                     "maxSelect": 1,
@@ -1724,8 +259,20 @@
             },
             {
                 "system": false,
-                "id": "woxs09np",
-                "name": "react",
+                "id": "7hhy16la",
+                "name": "message",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 2000000
+                }
+            },
+            {
+                "system": false,
+                "id": "xreyimhc",
+                "name": "type",
                 "type": "number",
                 "required": false,
                 "presentable": false,
@@ -1734,6 +281,33 @@
                     "min": null,
                     "max": null,
                     "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "y49jlzxy",
+                "name": "sent",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "xzqqqn0m",
+                "name": "changed",
+                "type": "date",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": "",
+                    "max": ""
                 }
             }
         ],
@@ -1805,5 +379,1508 @@
         "updateRule": "",
         "deleteRule": "",
         "options": {}
+    },
+    {
+        "id": "eimqqof2zk3kntz",
+        "name": "discussions",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "w5nv6gbn",
+                "name": "title",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "wzozt2ys",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "ci069jmo",
+                "name": "author_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "eljdqzez",
+                "name": "author",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 2000000
+                }
+            },
+            {
+                "system": false,
+                "id": "lhvly3hw",
+                "name": "topic",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "fml0lflf",
+                "name": "1",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "jghos11v",
+                "name": "2",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "dnwvkrbl",
+                "name": "like",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "gunar1x7",
+                "name": "messages",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "vufxxy41",
+                "name": "changed",
+                "type": "date",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": "",
+                    "max": ""
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "h2l5x29q56u7u5p",
+        "name": "friends",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "7sbzkaec",
+                "name": "profile_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            },
+            {
+                "system": false,
+                "id": "6govfx99",
+                "name": "user_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "mxqqxegd9y1p8ym",
+        "name": "messages",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "q5pnfrcn",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "wilczvwk",
+                "name": "chat_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "bqquvc01wg176wu",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "u7k0tmvf",
+                "name": "reply",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 2000000
+                }
+            },
+            {
+                "system": false,
+                "id": "gdy3kdtn",
+                "name": "deleted",
+                "type": "bool",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {}
+            },
+            {
+                "system": false,
+                "id": "40vilqds",
+                "name": "author_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "k7dgxqau",
+                "name": "author",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 2000000
+                }
+            },
+            {
+                "system": false,
+                "id": "sykbjopq",
+                "name": "1",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "ghvwcymr",
+                "name": "2",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "uu9jrbij",
+                "name": "3",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "blg3whgc",
+                "name": "4",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "vlxbcous",
+                "name": "5",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "s0hbhn1h",
+                "name": "6",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "0eo1vo8rktqekcz",
+        "name": "poll_answers",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "ovs0fpdu",
+                "name": "index",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "mgxqlffp",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "avdiylc9",
+                "name": "weight",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "io9tnohy",
+                "name": "question_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "h40ux5b9wuq9vi9",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "o1vibygr",
+                "name": "poll_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "h40ux5b9wuq9vi9",
+        "name": "poll_questions",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "77bc6nfi",
+                "name": "index",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "bdog1zoa",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "ddzx4edn",
+                "name": "note",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "tdpcyqig",
+                "name": "type",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "krmxzufs",
+                "name": "poll_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "ei9pgxln6nx97is",
+        "name": "poll_reacts",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "svi0funa",
+                "name": "profile_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            },
+            {
+                "system": false,
+                "id": "0esml5ia",
+                "name": "poll_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "woxs09np",
+                "name": "react",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "lyfhfpwoteyvl0q",
+        "name": "poll_results",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "hakl4fxs",
+                "name": "index",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "z5qb50l3",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "d8aid3ad",
+                "name": "weight",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "exkdf2ja",
+                "name": "poll_id",
+                "type": "relation",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "27rpm5hb2squrua",
+        "name": "polls",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "7zuzldby",
+                "name": "title",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "wcxarcuq",
+                "name": "about",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "eh6rbrc3",
+                "name": "author_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            },
+            {
+                "system": false,
+                "id": "3nvxqvtx",
+                "name": "author",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 256
+                }
+            },
+            {
+                "system": false,
+                "id": "qli7qudu",
+                "name": "categories",
+                "type": "json",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 256
+                }
+            },
+            {
+                "system": false,
+                "id": "phqewye9",
+                "name": "status",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "8funtfpv",
+                "name": "1",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "eefsdhcb",
+                "name": "2",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "vapsfbca",
+                "name": "like",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "gacmzwc9",
+                "name": "results",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "dklptrlv",
+                "name": "questions",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "zyzw8liw",
+                "name": "changed",
+                "type": "date",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": "",
+                    "max": ""
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "h37jbgf4s238vnb",
+        "name": "reacts",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "47pjxsha",
+                "name": "talk_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "9miysnhx1bzbgeh",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "qyitjqyo",
+                "name": "profile_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "toyqrq4e",
+                "name": "message_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "mxqqxegd9y1p8ym",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "lkzqbl2u",
+                "name": "react",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "qvmwf0ub",
+                "name": "chat_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "bqquvc01wg176wu",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "a69gtqvtbcik1ct",
+        "name": "results",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "swjlycfx",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "aygsf4v8",
+                "name": "result_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "5lz59gu5vyp0x3x",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "79vmgy8t",
+                "name": "profile_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "ua4qsc4g",
+                "name": "poll_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "9miysnhx1bzbgeh",
+        "name": "talks",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "jp4zwqzc",
+                "name": "profile_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "7ymme7kz",
+                "name": "chat_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "bqquvc01wg176wu",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "8onelvf1",
+                "name": "user_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "1fdwpcax",
+                "name": "message_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "mxqqxegd9y1p8ym",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "qu5tjbal",
+                "name": "read",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "trsy7gb8",
+                "name": "deleted",
+                "type": "bool",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {}
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "qy3yyqmeqtif7em",
+        "name": "user_answers",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "5vsxlduu",
+                "name": "poll_id",
+                "type": "relation",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            },
+            {
+                "system": false,
+                "id": "jztms1ur",
+                "name": "answer_id",
+                "type": "relation",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "0eo1vo8rktqekcz",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "hqlyrmb0",
+                "name": "question_id",
+                "type": "relation",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "h40ux5b9wuq9vi9",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "bp7nud5a",
+                "name": "result_id",
+                "type": "relation",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "5lz59gu5vyp0x3x",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "wb1dbqta",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "5lz59gu5vyp0x3x",
+        "name": "user_results",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "tddlclzk",
+                "name": "poll_id",
+                "type": "relation",
+                "required": true,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "27rpm5hb2squrua",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": []
+                }
+            },
+            {
+                "system": false,
+                "id": "5moyjy88",
+                "name": "result_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "lyfhfpwoteyvl0q",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "4nilacis",
+                "name": "weight",
+                "type": "number",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "noDecimal": false
+                }
+            },
+            {
+                "system": false,
+                "id": "lknf0x0i",
+                "name": "text",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "pr31rozw",
+                "name": "deleted",
+                "type": "bool",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {}
+            },
+            {
+                "system": false,
+                "id": "r4wvjsxm",
+                "name": "profile_id",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "zr2sqvit",
+                "name": "user_id",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": 30,
+                    "pattern": ""
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
+        "options": {}
+    },
+    {
+        "id": "o3t8y8r5ea8osdu",
+        "name": "which",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "fo7fiw5p",
+                "name": "name",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "9znp6b0e2nq8to8",
+        "name": "who",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "sovhrtel",
+                "name": "name",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "v4ijj65ff5xd7mj",
+        "name": "like",
+        "type": "view",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "jtj1bypz",
+                "name": "p0",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 1
+                }
+            },
+            {
+                "system": false,
+                "id": "exha9xot",
+                "name": "p1",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 1
+                }
+            },
+            {
+                "system": false,
+                "id": "susjty8d",
+                "name": "p2",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 1
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {
+            "query": "SELECT\n  id,\n  SUM((r = 0) * c) AS p0,\n  SUM((r = 1) * c) AS p1,\n  SUM((r = 2) * c) AS p2\nFROM (\n  SELECT\n    id, r,\n    COUNT(*) AS c\n  FROM (\n    SELECT\n      poll_id AS id,\n      react as r\n    FROM poll_reacts\n  )\n  GROUP BY id, r\n)\nGROUP BY id"
+        }
+    },
+    {
+        "id": "cd762m3lmdhskpd",
+        "name": "username",
+        "type": "view",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "l9w3aam6",
+                "name": "which",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 1
+                }
+            },
+            {
+                "system": false,
+                "id": "xmhxaebn",
+                "name": "who",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSize": 1
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {
+            "query": "SELECT who.id, which, who FROM (\n  SELECT '000000000000000' as id, name as which FROM which\n  ORDER BY RANDOM()\n  LIMIT 1) as which\nJOIN (\n  SELECT '000000000000000' as id, name as who FROM who\n  ORDER BY RANDOM()\n  LIMIT 1) as who\nON which.id = who.id"
+        }
     }
 ]

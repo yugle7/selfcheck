@@ -62,7 +62,7 @@
 	{/await}
 
 	<Page {default_params}>
-		<Params {profile} />
+		<Params />
 	</Page>
 {:else}
 	<Smooth>
@@ -75,7 +75,7 @@
 
 	<Resize>
 		<Side {default_params}>
-			<Params {profile} />
+			<Params />
 		</Side>
 	</Resize>
 {/if}

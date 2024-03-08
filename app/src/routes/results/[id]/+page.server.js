@@ -40,8 +40,10 @@ async function loadMessages(pb, chat_id) {
     });
 }
 
-async function loadChat(pb, result) {
-    const { id, title } = result;
+async function loadChat(pb, profile_id, result) {
+    const { poll_id, title } = result;
+    const id = addId(poll_id, profile_id);
+
     let chat;
 
     try {
@@ -64,15 +66,14 @@ async function loadChat(pb, result) {
 export async function load({ parent, url, locals }) {
     const pb = locals.pb;
     const profile = pb.authStore.model;
-
-    if (url.searchParams.get('type') !== '3') return {};
+    
+    if (!profile || url.searchParams.get('type') !== '3') return {};
 
     const { result } = await parent();
     if (!result) return {};
 
-    const chat = await loadChat(pb, result)
-    if (!profile) return { chat };
-
+    const chat = await loadChat(pb, profile.id, result)
     const talk = await loadTalk(pb, profile.id, chat.id);
+
     return { chat, talk }
 }
