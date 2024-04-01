@@ -48,7 +48,7 @@
 </script>
 
 <svelte:head>
-	<title>Результат – {getTitle(params)}</title>
+	<title>Результаты – {getTitle(params)}</title>
 </svelte:head>
 
 {#if $screen}

@@ -38,7 +38,7 @@
 	});
 </script>
 
-<div class="col over gap-40 padding-40-20" class:hidden={$screen !== 'params'} bind:this={col}>
+<div class="col over gap-40 padding-20" class:hidden={$screen !== 'params'} bind:this={col}>
 	<Close on:click={() => ($screen = 'content')} />
 	<slot />
 	<button {disabled} class:sticky class="button right" on:click={handle}> Применить </button>

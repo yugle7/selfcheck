@@ -5,7 +5,7 @@
 	import Question from './Question.svelte';
 
 	import { poll_category } from '../data';
-	import { getUserId, back } from '$lib';
+	import { getUserId } from '$lib';
 	import Status from './Status.svelte';
 
 	export let poll;
@@ -13,7 +13,7 @@
 	export let results;
 	export let profile;
 
-	const { title, about } = poll;
+	const { title, about, author_id } = poll;
 	let disabled = false;
 
 	const getSubtitle = () => {
@@ -127,7 +127,7 @@
 		</div>
 	</form>
 
-	{#if profile && (profile.role >= 2 || poll.author_id === profile.id)}
+	{#if profile && (profile.role >= 2 || author_id === profile.id)}
 		<div class="col padding-20 center gap-20 line-0">
 			<Status {poll} {profile} />
 			<button class="link center line-0" on:click>Исправить опрос</button>

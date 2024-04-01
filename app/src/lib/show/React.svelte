@@ -1,16 +1,21 @@
 <script>
-	import { react_color } from './data';
+	import { react_color, react_icon } from './data';
 
-	export let key;
-	export let type = 0;
-	export let count = null;
+	export let react;
+	export let count = 0;
+	export let state = 0;
 
-	$: color = type ? react_color[key] : '';
-	const style = `min-width: ${type == 2 ? 30 : 20}px;`;
+	const icon = react_icon[react];
+	const color = react_color[icon];
 </script>
 
-<button class:link={type > 0} class="row gap-2 padding-3" on:click>
-	<img class={color} {style} src="/icons/{key}.svg" alt={key} />
+<button class:link={state > 0} class="row gap-2 padding-3" on:click>
+	<img
+		class={state > 0 ? color : ''}
+		class:selected={state === 2}
+		src="/icons/{icon}.svg"
+		alt={icon}
+	/>
 	{#if count > 1}<span class="monospace">{count}</span>{/if}
 </button>
 
@@ -20,8 +25,11 @@
 		padding-right: 10px;
 		padding-left: 0;
 	}
-
+	.selected {
+		width: 30px;
+	}
 	img {
+		width: 20px;
 		padding: 0;
 	}
 

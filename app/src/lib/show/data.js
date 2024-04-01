@@ -1,3 +1,5 @@
+export const react_icon = ['', 'like', 'dislike', 'love', 'smile', 'sad', 'serious'];
+
 export const react_color = {
     'like': 'green',
     'dislike': 'red',

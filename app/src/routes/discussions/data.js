@@ -19,4 +19,3 @@ export const discussion_topic = [
     'Статьи про здоровье'
 ];
 
-export const discussion_react = [1, 2];

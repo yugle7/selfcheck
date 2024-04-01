@@ -14,11 +14,11 @@ export const back = writable('');
 export const pb = new PocketBase(PUBLIC_PB_URL);
 // pb.autoCancellation(false);
 
+export const likes = [1, 2];
 
 export function getUserId() {
     return Date.now().toString().slice(4) + Math.random().toString(36).slice(2);
 }
-
 
 function getCode(s, i) {
     const n = s.charCodeAt(i);

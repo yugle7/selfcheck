@@ -2,26 +2,21 @@ import { redirect } from "@sveltejs/kit";
 import { getAuthor } from "$lib";
 
 const createAnswer = async (pb, answer, index, question_id, poll_id) => {
-    delete answer.id;
-
     answer.index = index;
     await pb.collection('poll_answers').create({ ...answer, question_id, poll_id });
 };
 
 const createQuestion = async (pb, question, index, poll_id) => {
     const { answers } = question;
-    delete question.id;
-
-    question.answers = answers.length;
+    
     question.index = index;
+    question.answers = answers.length;
 
     const { id } = await pb.collection('poll_questions').create({ ...question, poll_id });
     await Promise.all(answers.map((a, i) => createAnswer(pb, a, i, id, poll_id)));
 };
 
 const createResult = async (pb, result, index, poll_id) => {
-    delete result.id;
-
     result.index = index;
     await pb.collection('poll_results').create({ ...result, poll_id });
 };

@@ -241,6 +241,7 @@ legend {
 
 .icon {
 	transition: opacity 0.3s ease-in;
+	width: 40px;
 }
 
 div[role='button'] {
@@ -639,10 +640,6 @@ input:empty:before {
 
 .padding-20 {
 	padding: 20px;
-}
-
-.padding-40-20 {
-	padding: 40px 20px;
 }
 
 .line-0 {

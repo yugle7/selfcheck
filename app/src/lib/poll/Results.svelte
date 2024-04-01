@@ -7,23 +7,23 @@
 	let results = $params.results;
 	$: $params.results = results;
 
-	let id = 2;
-	let result_id;
+	let index = results.length;
+	let id;
 </script>
 
 <ul
 	class="col gap-10"
 	on:drop={(e) => {
-		if (!result_id) return;
-		const i = results.findIndex(({ id }) => id === result_id);
+		if (!id) return;
+		const i = results.findIndex(({ index }) => index === id);
 		if (i < 0) return;
 
-		result_id = e.target.closest('li').id;
-		if (!result_id) return;
-		const j = results.findIndex(({ id }) => id === result_id);
+		id = e.target.closest('li').id;
+		if (!id) return;
+		const j = results.findIndex(({ index }) => index === id);
 		if (j < 0) return;
 
-		result_id = null;
+		id = null;
 
 		if (i < j) {
 			results = [
@@ -43,18 +43,18 @@
 	}}
 	on:dragover={(e) => e.preventDefault()}
 >
-	{#each results as result (result.id)}
+	{#each results as result (result.index)}
 		<Result
 			{result}
-			on:drag={() => (result_id = result.id)}
-			on:dragend={() => (result_id = null)}
-			on:click={() => (results = results.filter(({ id }) => id !== result.id))}
+			on:drag={() => (id = result.index)}
+			on:dragend={() => (id = null)}
+			on:click={() => (results = results.filter(({ index }) => index !== result.index))}
 		/>
 	{/each}
 
 	<button
 		class="link"
-		on:click|preventDefault={() => (results = [...results, { id: (id++).toString() }])}
+		on:click|preventDefault={() => (results = [...results, { index: index++ }])}
 	>
 		<span class="font-24">{plus}</span>
 		Результат

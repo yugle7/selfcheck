@@ -1,8 +1,7 @@
 <script>
 	import { enhance, applyAction } from '$app/forms';
 
-	import { discussion_react } from './data';
-	import { react_key } from '$lib/chat/data';
+	import { likes } from '$lib';
 
 	import React from '$lib/show/React.svelte';
 
@@ -17,10 +16,10 @@
 		<input type="hidden" value={id} name="discussion_id" id="discussion_id" />
 		<input type="hidden" value={react} name="react" id="react" />
 		
-		{#each discussion_react as r (r)}
+		{#each likes as r (r)}
 			<React
-				key={react_key[r]}
-				type={r === react}
+				react={r}
+				state={r === react}
 				count={discussion[r]}
 				on:click={() => {
 					if (react > 0) discussion[react]--;
@@ -36,8 +35,8 @@
 	</form>
 {:else}
 	<div class="row gap-5">
-		{#each discussion_react as r (r)}
-			<React key={react_key[r]} count={discussion[r]} />
+		{#each likes as r (r)}
+			<React react={r} count={discussion[r]} />
 		{/each}
 	</div>
 {/if}

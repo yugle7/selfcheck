@@ -1,8 +1,7 @@
 <script>
 	import { enhance, applyAction } from '$app/forms';
 
-	import { poll_react } from './data';
-	import { react_key } from '$lib/chat/data';
+	import { likes } from '$lib';
 
 	import React from '$lib/show/React.svelte';
 
@@ -17,10 +16,10 @@
 		<input type="hidden" value={id} name="poll_id" id="poll_id" />
 		<input type="hidden" value={react} name="react" id="react" />
 
-		{#each poll_react as r (r)}
+		{#each likes as r (r)}
 			<React
-				key={react_key[r]}
-				type={r === react}
+				react={r}
+				state={r === react}
 				count={poll[r]}
 				on:click={() => {
 					if (react > 0) poll[react]--;
@@ -36,8 +35,8 @@
 	</form>
 {:else}
 	<div class="row gap-5">
-		{#each poll_react as r (r)}
-			<React key={react_key[r]} count={poll[r]} />
+		{#each likes as r (r)}
+			<React react={r} count={poll[r]} />
 		{/each}
 	</div>
 {/if}

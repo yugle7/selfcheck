@@ -1,6 +1,6 @@
 <script>
 	import { enhance, applyAction } from '$app/forms';
-	import { message_react, react_key } from './data';
+	import { message_react } from './data';
 
 	import React from '$lib/show/React.svelte';
 
@@ -27,14 +27,14 @@
 
 		{#if clicked}
 			{#each message_react as r (r)}
-				<React key={react_key[r]} type=2 on:click={() => (react = r)} />
+				<React react={r} state="2" on:click={() => (react = r)} />
 			{/each}
 		{:else if reacts.length > 0}
 			{#each reacts as r (r)}
 				<React
 					count={message[r]}
-					type={react === r}
-					key={react_key[r]}
+					state={react === r}
+					react={r}
 					on:click={() => (react = react === r ? 0 : r)}
 				/>
 			{/each}
@@ -43,7 +43,7 @@
 {:else}
 	<div class="row gap-5">
 		{#each reacts as r (r)}
-			<React count={message[r]} key={react_key[r]} />
+			<React count={message[r]} react={r} />
 		{/each}
 	</div>
 {/if}

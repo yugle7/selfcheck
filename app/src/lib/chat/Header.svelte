@@ -24,8 +24,8 @@
 
 <nav>
 	{#if $find != null}
-		<button class="icon" on:click={handleClose}>
-			<img src="/icons/close.svg" alt="close" />
+		<button on:click={handleClose}>
+			<img class="icon" src="/icons/close.svg" alt="close" />
 		</button>
 		<form on:submit|preventDefault={handleFind}>
 			<input type="text" bind:value bind:this={input} />

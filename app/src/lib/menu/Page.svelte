@@ -26,10 +26,12 @@
 
 	<Route href="/about">О сайте</Route>
 	<Route href="/polls">Опросы</Route>
-
+	{#if profile}
+		<Route href="/results">Результаты</Route>
+	{/if}
+	
 	<Route href="/users">Люди</Route>
 	<Route href="/discussions">Общение</Route>
-
 	{#if profile}
 		<Route href="/chats">Чаты</Route>
 	{/if}

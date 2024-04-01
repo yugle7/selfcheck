@@ -10,7 +10,7 @@
 	let answers = question.answers;
 	$: question.answers = answers;
 
-	let id = 2;
+	let index = answers.length;
 	let answer_id;
 	
 	let selected;
@@ -109,7 +109,7 @@
 	
 	<button
 		class="link"
-		on:click|preventDefault={() => (answers = [...answers, { id: (id++).toString() }])}
+		on:click|preventDefault={() => (answers = [...answers, { index: index++ }])}
 	>
 		<span class="font-24">{plus}</span>
 		Oтвет

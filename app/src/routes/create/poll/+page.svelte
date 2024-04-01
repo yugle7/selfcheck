@@ -10,13 +10,13 @@
 	import Questions from '$lib/poll/Questions.svelte';
 	import Results from '$lib/poll/Results.svelte';
 
-	let questions = [{ id: '0', type: 0, answers: [{ id: '0' }, { id: '1' }] }];
-	let results = [{ id: '0' }, { id: '1' }];
+	let questions;
+	let results;
 
 	$params = {
 		categories: [],
-		questions: structuredClone(questions),
-		results: structuredClone(results)
+		questions: [{ index: 0, type: 0, answers: [{ index: 0 }, { index: 1 }] }],
+		results: [{ index: 0 }, { index: 1 }]
 	};
 	const p = JSON.stringify($params);
 	$: disabled = p === JSON.stringify($params);

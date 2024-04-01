@@ -109,44 +109,39 @@ const sendMessage = async (pb, profile, chat_id) => {
 
 const editAnswer = async (pb, answer, index, question_id, poll_id) => {
     const { id } = answer;
-    delete answer.id;
-
     answer.index = index;
 
-    if (id.length < 15) {
-        console.log({ ...answer, question_id, poll_id });
-        await pb.collection('poll_answers').create({ ...answer, question_id, poll_id });
-    } else {
+    if (id) {
         await pb.collection('poll_answers').update(id, answer);
+    } else {
+        await pb.collection('poll_answers').create({ ...answer, question_id, poll_id });
     }
 };
 
 const editQuestion = async (pb, question, index, poll_id) => {
     let { id, answers } = question;
-    delete question.id;
 
     question.answers = answers.length;
     question.index = index;
 
-    if (id.length < 15) {
+    if (id) {
+        await pb.collection('poll_questions').update(id, question);
+    } else {
         const res = await pb.collection('poll_questions').create({ ...question, poll_id });
         id = res.id;
-    } else {
-        await pb.collection('poll_questions').update(id, question);
     }
     await Promise.all(answers.map((a, i) => editAnswer(pb, a, i, id, poll_id)));
 };
 
 const editResult = async (pb, result, index, poll_id) => {
     const { id } = result;
-    delete result.id;
 
     result.index = index;
 
-    if (id.length < 15) {
-        await pb.collection('poll_results').create({ ...result, poll_id });
-    } else {
+    if (id) {
         await pb.collection('poll_results').update(id, result);
+    } else {
+        await pb.collection('poll_results').create({ ...result, poll_id });
     }
 };
 

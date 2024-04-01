@@ -27,7 +27,6 @@ export const poll_category = [
     'Гастроэнтерология'
 ];
 
-export const poll_react = [1, 2];
 
 export function getStatuses(profile, poll) {
     const { like, status } = poll;

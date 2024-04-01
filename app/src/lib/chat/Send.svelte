@@ -93,8 +93,8 @@
 		<div class="row away">
 			<Reply message={$reply} />
 
-			<button class="icon" on:click|preventDefault={() => ($reply = null)}>
-				<img src="/icons/close.svg" alt="close" class="icon" />
+			<button on:click|preventDefault={() => ($reply = null)}>
+				<img class="icon" src="/icons/close.svg" alt="close" />
 			</button>
 		</div>
 	{/if}
@@ -123,8 +123,8 @@
 			placeholder={chat_type[chat.type]}
 			bind:this={input}
 		/>
-		<button {disabled} class="icon" type="submit" on:click={handleSend}>
-			<img src="/icons/send.svg" alt="send" class="icon" />
+		<button {disabled} type="submit" on:click={handleSend}>
+			<img class="icon" src="/icons/send.svg" alt="send" />
 		</button>
 	</div>
 </form>

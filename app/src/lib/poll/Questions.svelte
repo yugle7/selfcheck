@@ -7,8 +7,8 @@
 	let questions = $params.questions;
 	$: $params.questions = questions;
 
-	let id = 1;
-	let question_id;
+	let index = questions.length;
+	let id;
 
 	$: value = JSON.stringify(questions);
 </script>
@@ -18,16 +18,16 @@
 <li
 	class="col gap-40"
 	on:drop={(e) => {
-		if (!question_id) return;
-		const i = questions.findIndex(({ id }) => id === question_id);
+		if (!id) return;
+		const i = questions.findIndex(({ index }) => index === id);
 		if (i < 0) return;
 
-		question_id = e.target.closest('li').id;
-		if (!question_id) return;
-		const j = questions.findIndex(({ id }) => id === question_id);
+		id = e.target.closest('li').id;
+		if (!id) return;
+		const j = questions.findIndex(({ index }) => index === id);
 		if (j < 0) return;
 
-		question_id = null;
+		id = null;
 
 		if (i < j) {
 			questions = [
@@ -47,13 +47,13 @@
 	}}
 	on:dragover={(e) => e.preventDefault()}
 >
-	{#each questions as question, i (question.id)}
+	{#each questions as question, i (question.index)}
 		<Question
 			{i}
 			{question}
-			on:drag={() => (question_id = question.id)}
-			on:dragend={() => (question_id = null)}
-			on:click={() => (questions = questions.filter(({ id }) => id !== question.id))}
+			on:drag={() => (id = question.index)}
+			on:dragend={() => (id = null)}
+			on:click={() => (questions = questions.filter(({ index }) => index !== question.index))}
 		/>
 	{/each}
 </li>
@@ -64,9 +64,9 @@
 		(questions = [
 			...questions,
 			{
-				id: (id++).toString(),
+				index: index++,
 				type: 0,
-				answers: [{ id: '0' }, { id: '1' }]
+				answers: [{ index: 0 }, { index: 1 }]
 			}
 		])}
 >

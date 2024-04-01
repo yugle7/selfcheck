@@ -23,8 +23,6 @@ export const react_color = {
     'serious': 'brown',
 };
 
-export const react_key = ['', 'like', 'dislike', 'love', 'smile', 'sad', 'serious'];
-
 export const chat_type = [
     'Личная переписка',
     'Совместное общение',
@@ -54,13 +52,13 @@ export function getTitle(chat, talk) {
 }
 
 export function getUrl(chat) {
-    const { type, talk } = chat;
+    const { id, type, talk } = chat;
     let url;
 
     if (type === 0) url = `/users/${talk.user.username}`;
-    else if (type === 1) url = `/discussions/${chat.id}`;
-    else if (type === 2) url = `/polls/${chat.id}`
-    else if (type === 3) url = `/results/${chat.id}`
+    else if (type === 1) url = `/discussions/${id}`;
+    else if (type === 2) url = `/polls/${id}`
+    else if (type === 3) url = `/results/${id}`
 
     return `${url}?type=${type}`
 }
